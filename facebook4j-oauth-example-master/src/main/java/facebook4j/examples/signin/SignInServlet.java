@@ -23,7 +23,7 @@ public class SignInServlet extends HttpServlet {
         request.getSession().setAttribute("facebook", facebook);
         facebook.setOAuthAppId("881525751896724", "afaed2830bae15efd4a1a92591625579"); 
         facebook.setOAuthPermissions("email,user_friends"); 
-       facebook.setOAuthAccessToken(new AccessToken("CAACEdEose0cBAJHJevpRBnCvKqPGTSaWoJg7HCtyKbm52XlFA4ZC9UAp3CFJqFseaPpaj02mrJwgZC16z07w1Y1gbV4CLZAFpMZCPdiSqcZBXWbGUaYHweYaa8WKtzVHZBeInZCqKQx64XTAm1kkNFmaGYeHHkZBtbA3BRj8DtVykKcTezbWPIwNHxCxB5qArcKE2AsVhn6Ogp5yEeZCLEhbGoVCOFyDOsYAZD", null));
+       facebook.setOAuthAccessToken(new AccessToken("CAACEdEose0cBAEQWWVpwNYgFUuSOQOXoQME6FWqCGicnkDqoeZC0OOX4NfB7ZCOhUezTuAggYtgw1vhZAKVXLfW17RRgiifkQZCUXvvqJnpcNLGeN8LC6Ysru7dX7DRQ5cW6LkFrjv6hKU2URCIam3fiN7Vw7UwEn0w5bqWQcOYtf3kwzqJnm92hNKzlTdhnrvd6UDOojVOkx4Mt2zyWKkRAi6hCyHcZD", null));
        /*try {
 		ResponseList<Friendlist>responseFriends= facebook.getFriendlists();
 		System.out.println("Friends count= "+responseFriends.size());

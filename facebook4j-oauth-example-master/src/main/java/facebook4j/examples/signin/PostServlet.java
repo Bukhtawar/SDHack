@@ -29,7 +29,11 @@ public class PostServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String message = request.getParameter("message");
         Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
-        BatchRequests<BatchRequest> batch = new BatchRequests<BatchRequest>();
+        meth(facebook);
+    }
+    
+    private void method2(Facebook facebook,HttpServletRequest request, HttpServletResponse response) throws IOException{
+    	BatchRequests<BatchRequest> batch = new BatchRequests<BatchRequest>();
         batch.add(new BatchRequest(RequestMethod.GET, "me"));
         batch.add(new BatchRequest(RequestMethod.GET, "/v2.0/me/taggable_friends?limit=2000&field=id"));
         List<BatchResponse> results;
