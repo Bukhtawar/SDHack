@@ -1,0 +1,10 @@
+.product{
+	float:left;
+	width:80%;
+	text-align:center;
+}
+.login{
+	float:right;
+	width:20%;
+	margin-top:30px;
+}

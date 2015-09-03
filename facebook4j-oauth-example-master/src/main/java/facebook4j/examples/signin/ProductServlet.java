@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import facebook4j.Facebook;
 import facebook4j.examples.dto.Product;
 
 public class ProductServlet extends HttpServlet{
@@ -22,7 +23,7 @@ public class ProductServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getSession().setAttribute("name", "Avinash");
+		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
 		request.getSession().setAttribute("product", productMap.get(request.getParameter("pid")));
 		request.getRequestDispatcher("product.jsp").forward(request, response);
 	}

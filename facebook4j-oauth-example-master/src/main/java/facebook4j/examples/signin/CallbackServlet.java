@@ -22,6 +22,6 @@ public class CallbackServlet extends HttpServlet {
         } catch (FacebookException e) {
             throw new ServletException(e);
         }
-        response.sendRedirect(request.getContextPath() + "/");
+        response.sendRedirect(request.getContextPath() + "/product?pid=1");
     }
 }
