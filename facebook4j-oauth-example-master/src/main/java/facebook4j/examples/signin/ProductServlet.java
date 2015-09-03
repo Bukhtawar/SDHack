@@ -23,7 +23,7 @@ public class ProductServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().setAttribute("name", "Avinash");
-		request.getSession().setAttribute("product", productMap.get("1"));
+		request.getSession().setAttribute("product", productMap.get(request.getParameter("pid")));
 		request.getRequestDispatcher("product.jsp").forward(request, response);
 	}
 	
