@@ -23,9 +23,9 @@
 			<a href="signin">Sign in with Facebook</a>
 		</tag:notloggedin>
 		<tag:loggedin>
-		  Welcome <b>${facebook.name}</b>
-			</br>
-			<a href="./logout">logout</a>
+		<img id="displayPicture" src="${dpUrl}" />
+		Welcome <b>${facebook.name}</b>
+		<a href="./logout" style="position:absolute;right:160px;top:55px">Log Out</a>
 		</tag:loggedin>
 	</div>
 	<div style="float:left;margin-right:60px;margin-left: 30px">

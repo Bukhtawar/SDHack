@@ -14,6 +14,7 @@ import com.snapdeal.reviews.client.factory.ReviewClientFactory.ConfigurationPara
 
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
+import facebook4j.PictureSize;
 import facebook4j.examples.dto.Product;
 
 public class ProductServlet extends HttpServlet{
@@ -31,7 +32,7 @@ public class ProductServlet extends HttpServlet{
 		request.getSession().setAttribute("product", productMap.get(request.getParameter("pid")));
 		request.getRequestDispatcher("product.jsp").forward(request, response);
 		ReviewClientFactory.getClient();
-		
+		request.getSession().setAttribute("dpUrl", getDisplayPictureURL(160, 160, facebook));
 	}
 	
 	private static void fillProductMap(){
@@ -52,7 +53,7 @@ public class ProductServlet extends HttpServlet{
 	private String getDisplayPictureURL(int width, int height, final Facebook facebook) {
 		String url = null;
 		try {
-			url = facebook.getPictureURL(width, height).toString();
+			url = facebook.getPictureURL(width,height).toString();
 		} catch (FacebookException e) {
 			e.printStackTrace();
 		}
