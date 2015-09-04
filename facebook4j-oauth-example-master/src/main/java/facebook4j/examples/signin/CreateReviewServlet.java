@@ -29,17 +29,14 @@ public class CreateReviewServlet  extends HttpServlet {
 	
 	public static void initReviewClient(){
 		Map<ConfigurationParams, String> configParams =  new HashMap<ReviewClientFactory.ConfigurationParams, String>();
-		configParams.put(ConfigurationParams.BASE_URL, "http://169.254.7.82:8080/reviews-api");
+		configParams.put(ConfigurationParams.BASE_URL, "http://10.1.23.137:8080/reviews-api");
 		ReviewClientFactory.init(configParams);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Map<ConfigurationParams, String> configParams = new HashMap<ConfigurationParams, String>();
-		configParams.put(ConfigurationParams.BASE_URL, "http://169.254.7.82:8080/reviews-api");
-		ReviewClientFactory.init(configParams);
+		initReviewClient();
 		ReviewClientService client = ReviewClientFactory.getClient();
 		
 		CreateReviewRequest createReviewRequest = new CreateReviewRequest();
