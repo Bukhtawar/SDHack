@@ -19,7 +19,9 @@
 	href="http://i3.sdlcdn.com/js/omssdpts1s73/snap/writeReviews.new.min.js"
 	rel="stylesheet" type="text/css" />
 
-
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 </head>
 <body style="background: #ececec">
 	<div style="background: white;">

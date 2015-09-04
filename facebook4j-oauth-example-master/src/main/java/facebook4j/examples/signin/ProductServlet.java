@@ -41,7 +41,7 @@ public class ProductServlet extends HttpServlet{
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
 		request.getSession().setAttribute("productId", pid);
 		request.getSession().setAttribute("product", productMap.get(pid));
-		request.getRequestDispatcher("product.jsp").forward(request, response);
+		
 		ReviewClientFactory.getClient();
 		if(facebook != null){
 			request.getSession().setAttribute("dpUrl", getDisplayPictureURL(160, 160, facebook));
@@ -53,6 +53,7 @@ public class ProductServlet extends HttpServlet{
 		
 		ResponseList<Friend> responseFriends;
 		ReviewPerUserResponse reviews = null;
+		List<Review> rs = null;
 		try {
 			if(facebook != null){
 				responseFriends = facebook.getFriends(new Reading().fields("id,name"));
@@ -61,14 +62,17 @@ public class ProductServlet extends HttpServlet{
 				System.out.println("friends "+ friendsStr);
 				reviews = client.getReviewPerUserForPogId(params);
 				Map<String, Review> reviewPerUser = reviews.getReviewPerUser();
-				List<Review> rs = new ArrayList<Review>(reviewPerUser.values());
-				request.getSession().setAttribute("rs", rs);
+				rs = new ArrayList<Review>(reviewPerUser.values());
+				
 			}
 		} catch (FacebookException e) {
 			e.printStackTrace();
 		} catch (SnapdealWSException e) {
 			e.printStackTrace();
 		}
+		System.out.println("Setting attribute");
+		request.getSession().setAttribute("rs", rs);
+		request.getRequestDispatcher("product.jsp").forward(request, response);
 	}
 	
 	private String getFriendIds(ResponseList<Friend> friends){
