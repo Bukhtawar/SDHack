@@ -109,9 +109,9 @@
         </li>
         <li id="user-reviewRate-content-div" class="third col-xs-8">
             
-            <div class="text aligncenter">
+            <div class="text aligncenter" style="margin-top: 108px">
                 <p id="rev-text"><span>Have you purchased this item?</span></p>
-                <a href="writereviews?pid=${product.id}" >Write A Review</a>
+                <a href="writereviews?pid=${product.id}" class="btn btn-orange  btn-line rippleWhite js-userReviewed"  >Write A Review</a>
             </div>
          </li>
         <!--  Summary Rate/Review Starts -->
