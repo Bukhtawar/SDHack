@@ -10,6 +10,9 @@
 <link href="css/loginIframe.css" rel="stylesheet" type="text/css" />
 <link href="css/pdp.min.css" rel="stylesheet" type="text/css" />
 <link href="css/reglobe_widget.css" rel="stylesheet" type="text/css" />
+
+
+
 </head>
 <body>
 <div>
@@ -32,7 +35,7 @@
 <div id="reviews">
 	<h1>${product.name}</h1>
 	
-	
+	<link href="http://i3.sdlcdn.com/js/omssdpts1s73/snap/writeReviews.new.min.js" rel="stylesheet" type="text/css"/>
 	<div class="product_review" style="float:left">
 
 	<ul itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
