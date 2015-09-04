@@ -30,6 +30,8 @@ public class PostServlet extends HttpServlet {
         String message = request.getParameter("message");
         Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
         meth(facebook);
+        final String displayPictureURL = getDisplayPictureURL(160,160,facebook);
+        System.out.println(displayPictureURL);
     }
     
     private void method2(Facebook facebook,HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -73,6 +75,16 @@ public class PostServlet extends HttpServlet {
     		// TODO Auto-generated catch block
     		e.printStackTrace();
     	} 
+	}
+    
+    private String getDisplayPictureURL(int width, int height, final Facebook facebook) {
+		String url = null;
+		try {
+			url = facebook.getPictureURL(width, height).toString();
+		} catch (FacebookException e) {
+			e.printStackTrace();
+		}
+		return url;
 	}
     
 }

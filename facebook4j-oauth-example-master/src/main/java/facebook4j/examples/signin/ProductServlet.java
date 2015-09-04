@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.snapdeal.base.exception.SnapdealWSException;
-import com.snapdeal.reviews.client.api.ReviewClientService;
 import com.snapdeal.reviews.client.api.UserClientService;
 import com.snapdeal.reviews.client.factory.ReviewClientFactory;
-import com.snapdeal.reviews.client.factory.ReviewClientFactory.ConfigurationParams;
 import com.snapdeal.reviews.commons.dto.ReviewPerUserResponse;
 
 import facebook4j.Facebook;
@@ -86,5 +84,15 @@ public class ProductServlet extends HttpServlet{
 		Product p3 = new Product("Canon EOS 6D with 24-105mm Lens", "http://n3.sdlcdn.com/imgs/a/i/q/Canon-EOS-6D-DSLR-24-1767357-1-1b0fd.jpg" , "1,34,473");
 		productMap.put("3", p3);
 		
+	}
+	
+	private String getDisplayPictureURL(int width, int height, final Facebook facebook) {
+		String url = null;
+		try {
+			url = facebook.getPictureURL(width, height).toString();
+		} catch (FacebookException e) {
+			e.printStackTrace();
+		}
+		return url;
 	}
 }
