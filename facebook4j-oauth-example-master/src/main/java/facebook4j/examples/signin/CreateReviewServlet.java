@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.snapdeal.base.exception.SnapdealWSException;
 import com.snapdeal.reviews.client.api.ReviewClientService;
 import com.snapdeal.reviews.client.factory.ReviewClientFactory;
@@ -20,6 +18,9 @@ import com.snapdeal.reviews.commons.UserReviewsInfo;
 import com.snapdeal.reviews.commons.dto.ReviewRequest;
 import com.snapdeal.reviews.commons.dto.wrapper.CreateReviewRequest;
 import com.snapdeal.reviews.commons.dto.wrapper.CreateReviewResponse;
+
+import facebook4j.Facebook;
+import facebook4j.FacebookException;
 
 public class CreateReviewServlet  extends HttpServlet {
 	
@@ -44,10 +45,19 @@ public class CreateReviewServlet  extends HttpServlet {
 		OpinionBo recommendation = OpinionBo.valueOf(request.getParameter("recommend"));
 		reviewRequest.setComments(request.getParameter("experience_value"));
 		reviewRequest.setHeadline(request.getParameter("headline_value"));
-		reviewRequest.setProductId(request.getParameter("pid"));
+		reviewRequest.setProductId((String)request.getSession().getAttribute("productId"));
 		reviewRequest.setRating(Integer.parseInt(request.getParameter("reviewrating")));
 		reviewRequest.setRecommended(recommendation);
-		reviewRequest.setUserReviewsInfo(new UserReviewsInfo("user", request.getParameter("nickname_value"), Boolean.TRUE, 0));
+		Facebook fb = (Facebook)request.getSession().getAttribute("facebook");
+		try {
+			reviewRequest.setUserReviewsInfo(new UserReviewsInfo(fb.getId(), request.getParameter("nickname_value"), Boolean.TRUE, 0));
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (FacebookException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		createReviewRequest.setReviewRequest(reviewRequest);
 		
 		try {

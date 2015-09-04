@@ -39,7 +39,7 @@ public class ProductServlet extends HttpServlet{
 			throws ServletException, IOException {
 		String pid = request.getParameter("pid");
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
-		request.getSession().setAttribute("productId", 1);
+		request.getSession().setAttribute("productId", pid);
 		request.getSession().setAttribute("product", productMap.get(pid));
 		request.getRequestDispatcher("product.jsp").forward(request, response);
 		ReviewClientFactory.getClient();
@@ -49,7 +49,7 @@ public class ProductServlet extends HttpServlet{
 		
 		UserClientService client = ReviewClientFactory.getUserClient();
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("productId", "12121212");
+		params.put("productId", pid);
 		
 		ResponseList<Friend> responseFriends;
 		ReviewPerUserResponse reviews = null;
@@ -57,7 +57,7 @@ public class ProductServlet extends HttpServlet{
 			if(facebook != null){
 				responseFriends = facebook.getFriends(new Reading().fields("id,name"));
 				String friendsStr = getFriendIds(responseFriends);
-				params.put("users", "user");
+				params.put("users", friendsStr+","+facebook.getId());
 				System.out.println("friends "+ friendsStr);
 				reviews = client.getReviewPerUserForPogId(params);
 				Map<String, Review> reviewPerUser = reviews.getReviewPerUser();
