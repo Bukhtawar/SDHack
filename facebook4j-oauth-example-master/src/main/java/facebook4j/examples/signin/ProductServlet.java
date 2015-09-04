@@ -9,10 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.snapdeal.base.exception.SnapdealWSException;
+import com.snapdeal.reviews.client.api.ReviewClientService;
+import com.snapdeal.reviews.client.api.UserClientService;
 import com.snapdeal.reviews.client.factory.ReviewClientFactory;
 import com.snapdeal.reviews.client.factory.ReviewClientFactory.ConfigurationParams;
+import com.snapdeal.reviews.commons.dto.ReviewPerUserResponse;
 
 import facebook4j.Facebook;
+import facebook4j.FacebookException;
+import facebook4j.Friend;
+import facebook4j.Reading;
+import facebook4j.ResponseList;
 import facebook4j.examples.dto.Product;
 
 public class ProductServlet extends HttpServlet{
@@ -21,18 +29,48 @@ public class ProductServlet extends HttpServlet{
 	
 	static{
 		fillProductMap();
+		CreateReviewServlet.initReviewClient();
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String pid = request.getParameter("pid");
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
-		request.getSession().setAttribute("product", productMap.get(request.getParameter("pid")));
+		request.getSession().setAttribute("product", productMap.get(pid));
 		request.getRequestDispatcher("product.jsp").forward(request, response);
 		
 		
-		ReviewClientFactory.getClient();
+		UserClientService client = ReviewClientFactory.getUserClient();
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("productId", pid);
 		
+		ResponseList<Friend> responseFriends;
+		ReviewPerUserResponse reviews = null;
+		try {
+			responseFriends = facebook.getFriends(new Reading().fields("id,name"));
+			String friendsStr = getFriendIds(responseFriends);
+			params.put("users", friendsStr);
+			System.out.println("friends "+ friendsStr);
+			reviews = client.getReviewPerUserForPogId(params);
+		} catch (FacebookException e) {
+			e.printStackTrace();
+		} catch (SnapdealWSException e) {
+			e.printStackTrace();
+		}
+		request.getSession().setAttribute("reviews", reviews);
+	}
+	
+	private String getFriendIds(ResponseList<Friend> friends){
+		String str = "";
+		for(Friend friend: friends){
+			if(str.length() == 0){
+				str += friend.getId();
+			}else{
+				str += "," + friend.getId();
+			}
+		}
+		return str;
 	}
 	
 	private static void fillProductMap(){
