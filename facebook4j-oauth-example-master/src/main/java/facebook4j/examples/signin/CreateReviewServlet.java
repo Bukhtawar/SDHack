@@ -22,8 +22,12 @@ import com.snapdeal.reviews.commons.dto.wrapper.CreateReviewRequest;
 public class CreateReviewServlet  extends HttpServlet {
 	
 	static{
+		initReviewClient();
+	}
+	
+	public static void initReviewClient(){
 		Map<ConfigurationParams, String> configParams =  new HashMap<ReviewClientFactory.ConfigurationParams, String>();
-		configParams.put(ConfigurationParams.BASE_URL, "http://10.1.23.137:8080/");
+		configParams.put(ConfigurationParams.BASE_URL, "http://10.1.28.14:8080/");
 		ReviewClientFactory.init(configParams);
 	}
 	
