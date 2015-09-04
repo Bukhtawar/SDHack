@@ -99,6 +99,13 @@
                 <a id="notRecBtn" class="btn btn-blue btn-line rippleWhite" onclick="Snapdeal.pdpReview.recommendProduct(this, &#39;634212839248&#39;,&#39;NO&#39;);">NO</a>
             </div>
         </li>
+        <li id="user-reviewRate-content-div" class="third col-xs-8">
+            
+            <div class="text aligncenter">
+                <p id="rev-text"><span>Have you purchased this item?</span></p>
+                <a class="btn btn-orange  btn-line rippleWhite js-userReviewed" onclick="Snapdeal.pdpReview.writeReview(this, &#39;634212839248&#39;)">Write A Review</a>
+            </div>
+         </li>
         <!--  Summary Rate/Review Starts -->
         
     </ul>
