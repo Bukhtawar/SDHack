@@ -111,7 +111,7 @@
             
             <div class="text aligncenter">
                 <p id="rev-text"><span>Have you purchased this item?</span></p>
-                <a class="btn btn-orange  btn-line rippleWhite js-userReviewed" onclick="Snapdeal.pdpReview.writeReview(this, &#39;634212839248&#39;)">Write A Review</a>
+                <a href="writereviews?pid=${product.id}" >Write A Review</a>
             </div>
          </li>
         <!--  Summary Rate/Review Starts -->
