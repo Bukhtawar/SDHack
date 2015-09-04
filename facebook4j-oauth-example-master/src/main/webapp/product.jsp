@@ -135,7 +135,7 @@
 	
 	
 	
-	<div style="  line-height: 38px;background: #fafafa;padding: 3px 40px 0 40px;width: 70%;margin-top: 30px;">
+	<div style="  line-height: 38px;background: #fafafa;padding: 3px 40px 0 40px;margin-top: 30px;">
 		<span style="font-size: 14px;margin-left:-4px;color: #ababab !important;">Displaying Reviews 1-8 of 8</span>
 		<li style="float: right;padding-left: 30px;font-size: 14px;color: #ababab !important;"><a onclick="Snapdeal.pdpReview.fetchHelpfulReviews(this, &#39;0&#39;);">Most Helpful</a></li>
 		<li style="float: right;margin-left: 30px;font-size: 14px;  border-bottom: 2px solid #fb8903;color: #fb8903;" class="active"><a onclick="Snapdeal.pdpReview.fetchHelpfulReviews(this, &#39;0&#39;);">Friends</a>
@@ -147,7 +147,7 @@
 <c:forEach items="${rs}" var="review">
     
 <jsp:setProperty name="dateValue" property="time" value="${review.createdAt}"/>
-        <div id="0141c7ae7040000047cf527731c5776d_reviewDiv" class="commentlist first">
+        <div id="0141c7ae7040000047cf527731c5776d_reviewDiv" class="commentlist">
                     <div class="userimg"><span class="reviewer-imgName" style="background:#63d6d1">Y</span>
                         <span class="_reviewUserName" title="yakub">${review.userReviewsInfo.nickName}</span>
                         <small class="LTgray light-font">${review.userReviewsInfo.totalNumberOfReviews} Reviews</small>
