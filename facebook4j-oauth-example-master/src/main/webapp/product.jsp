@@ -184,9 +184,21 @@
 					<div id="0141c7ae7040000047cf527731c5776d_reviewDiv"
 						class="commentlist">
 						<div class="userimg">
-							 <span class="reviewer-imgName" style="background: #63d6d1">Y</span>
-<%-- 							<img src="${reviewWrapper.dpUrl}" class="reviewer-imgName" style="background: #63d6d1"/> 
- --%>							<span class="_reviewUserName" title="yakub">${reviewWrapper.review.userReviewsInfo.nickName}</span>
+							 <!-- <span class="reviewer-imgName" style="background: #63d6d1">Y</span> -->
+							 
+							<img src="http://graph.facebook.com/v2.4/${reviewWrapper.facebookId}/picture?type=square" class="reviewer-imgName" style="background: #63d6d1" id="fb" fb-id="${reviewWrapper.facebookId}"/> 
+							<script>
+							
+								
+							 var html=document.getElementById("fb");
+							 var attr=html.getAttribute("fb-id");
+							 var hrf="http://graph.facebook.com/v2.4/" + attr + "/picture";
+							 html.setAttribute("src", hrf);
+							 console.log(hrf);
+							 
+							 
+							 </script>
+							<span class="_reviewUserName" title="yakub">${reviewWrapper.review.userReviewsInfo.nickName}</span>
 							<small class="LTgray light-font">${reviewWrapper.review.userReviewsInfo.totalNumberOfReviews}
 								Reviews</small>
 						</div>
