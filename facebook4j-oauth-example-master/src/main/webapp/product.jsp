@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<jsp:useBean id="dateValue" class="java.util.Date"/>
+
 
 <html>
 <head>
@@ -130,13 +135,46 @@
 	
 	
 	
-	<div style="  line-height: 38px;background: #fafafa;padding: 3px 40px 0 40px;width: 850;margin-top: 30px;">
+	<div style="  line-height: 38px;background: #fafafa;padding: 3px 40px 0 40px;width: 70%;margin-top: 30px;">
 		<span style="font-size: 14px;margin-left:-4px;color: #ababab !important;">Displaying Reviews 1-8 of 8</span>
 		<li style="float: right;padding-left: 30px;font-size: 14px;color: #ababab !important;"><a onclick="Snapdeal.pdpReview.fetchHelpfulReviews(this, &#39;0&#39;);">Most Helpful</a></li>
 		<li style="float: right;margin-left: 30px;font-size: 14px;  border-bottom: 2px solid #fb8903;color: #fb8903;" class="active"><a onclick="Snapdeal.pdpReview.fetchHelpfulReviews(this, &#39;0&#39;);">Friends</a>
         <li style="float: right;padding-left: 30px;font-size: 14px;color: #ababab !important;">Sort by:</li>
         
 	</div>
+	<!--start -->
+	<div class="commentreview">
+<c:forEach items="${rs}" var="review">
+    
+<jsp:setProperty name="dateValue" property="time" value="${review.createdAt}"/>
+        <div id="0141c7ae7040000047cf527731c5776d_reviewDiv" class="commentlist first">
+                    <div class="userimg"><span class="reviewer-imgName" style="background:#63d6d1">Y</span>
+                        <span class="_reviewUserName" title="yakub">${review.userReviewsInfo.nickName}</span>
+                        <small class="LTgray light-font">${review.userReviewsInfo.totalNumberOfReviews} Reviews</small>
+                        </div>
+                    <div class="text">
+
+                        <div class="user-review">
+                      
+                            <div class="date LTgray"><fmt:formatDate value="${dateValue}" type="both" /></div>
+                            <div class="rating">
+                            <c:forEach var="i" begin="1" end="${review.rating}">
+  							 <i class="sd-icon sd-icon-star active"></i>
+							</c:forEach>
+                                                  
+                                </div>
+                            <div class="head">${review.headline}</div>
+                            <p>${review.comments}</p>
+                        </div>
+                        <div class="LTgray grey-div hf-review">Was this review helpful?
+                            <a class="middle-grey-button rippleGrey hf-yes yesAnchor" onclick="Snapdeal.pdpReview.markReviewHelpful(this, '0141c7ae7040000047cf527731c5776d')">${review.recommended}</a>
+          	                  <span class="middle-grey-button text hf-num">${review.upCount}</span>
+                        </div>
+                    </div>
+                </div>
+                     
+</c:forEach>
+            </div>
 	<!-- <div id="review">
 		sadfasdf
 	</div> -->
