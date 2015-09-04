@@ -15,7 +15,7 @@
 <link href="css/loginIframe.css" rel="stylesheet" type="text/css" />
 <link href="css/pdp.min.css" rel="stylesheet" type="text/css" />
 <link href="css/reglobe_widget.css" rel="stylesheet" type="text/css" />
-
+<link href="http://i3.sdlcdn.com/js/omssdpts1s73/snap/writeReviews.new.min.js" rel="stylesheet" type="text/css"/>
 
 
 </head>
@@ -33,14 +33,15 @@
 		<a href="./logout" style="position:absolute;right:160px;top:55px">Log Out</a>
 		</tag:loggedin>
 	</div>
-	<div style="float:left;margin-right:60px;margin-left: 30px">
+	
+<div style="float:left;width:30%;padding:20px;">
 	<img src="${product.image}" width="300"/>
 </div>
 
-<div id="reviews">
+<div id="reviews" style="float:right;width:70%">
 	<h1>${product.name}</h1>
 	
-	<link href="http://i3.sdlcdn.com/js/omssdpts1s73/snap/writeReviews.new.min.js" rel="stylesheet" type="text/css"/>
+	
 	<div class="product_review" style="float:left;width: 900px">
 
 	<ul itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
@@ -111,7 +112,9 @@
             
             <div class="text aligncenter" style="margin-top: 108px">
                 <p id="rev-text"><span>Have you purchased this item?</span></p>
+
                 <a href="writereviews?pid=${product.id}" class="btn btn-orange  btn-line rippleWhite js-userReviewed"  >Write A Review</a>
+
             </div>
          </li>
         <!--  Summary Rate/Review Starts -->
@@ -175,9 +178,6 @@
                      
 </c:forEach>
             </div>
-	<!-- <div id="review">
-		sadfasdf
-	</div> -->
 </div>
 </div>
 </body>
