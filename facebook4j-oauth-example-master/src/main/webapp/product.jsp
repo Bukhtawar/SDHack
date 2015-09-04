@@ -35,7 +35,7 @@
 			<img id="displayPicture" src="${dpUrl}" />
 		Welcome <b>${facebook.name}</b>
 			<a href="./logout"
-				style="position: absolute; right: 160px; top: 55px">Log Out</a>
+				style="position: absolute; right: 160px; top: 44px">Log Out</a>
 		</tag:loggedin>
 	</div>
 
@@ -175,16 +175,17 @@
 			</div>
 			<!--start -->
 			<div class="commentreview">
-				<c:forEach items="${rs}" var="review">
+				<c:forEach items="${rs}" var="reviewWrapper">
 
 					<jsp:setProperty name="dateValue" property="time"
-						value="${review.createdAt}" />
+						value="${reviewWrapper.review.createdAt}" />
 					<div id="0141c7ae7040000047cf527731c5776d_reviewDiv"
 						class="commentlist">
 						<div class="userimg">
-							<span class="reviewer-imgName" style="background: #63d6d1">Y</span>
-							<span class="_reviewUserName" title="yakub">${review.userReviewsInfo.nickName}</span>
-							<small class="LTgray light-font">${review.userReviewsInfo.totalNumberOfReviews}
+							 <span class="reviewer-imgName" style="background: #63d6d1">Y</span>
+<%-- 							<img src="${reviewWrapper.dpUrl}" class="reviewer-imgName" style="background: #63d6d1"/> 
+ --%>							<span class="_reviewUserName" title="yakub">${reviewWrapper.review.userReviewsInfo.nickName}</span>
+							<small class="LTgray light-font">${reviewWrapper.review.userReviewsInfo.totalNumberOfReviews}
 								Reviews</small>
 						</div>
 						<div class="text">
@@ -195,19 +196,19 @@
 									<fmt:formatDate value="${dateValue}" type="both" />
 								</div>
 								<div class="rating">
-									<c:forEach var="i" begin="1" end="${review.rating}">
+									<c:forEach var="i" begin="1" end="${reviewWrapper.review.rating}">
 										<i class="sd-icon sd-icon-star active"></i>
 									</c:forEach>
 
 								</div>
-								<div class="head">${review.headline}</div>
-								<p>${review.comments}</p>
+								<div class="head">${reviewWrapper.review.headline}</div>
+								<p>${reviewWrapper.review.comments}</p>
 							</div>
 							<div class="LTgray grey-div hf-review">
 								Was this review helpful? <a
 									class="middle-grey-button rippleGrey hf-yes yesAnchor"
-									onclick="Snapdeal.pdpReview.markReviewHelpful(this, '0141c7ae7040000047cf527731c5776d')">${review.recommended}</a>
-								<span class="middle-grey-button text hf-num">${review.upCount}</span>
+									onclick="Snapdeal.pdpReview.markReviewHelpful(this, '0141c7ae7040000047cf527731c5776d')">${reviewWrapper.review.recommended}</a>
+								<span class="middle-grey-button text hf-num">${reviewWrapper.review.upCount}</span>
 							</div>
 						</div>
 					</div>

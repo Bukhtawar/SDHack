@@ -19,7 +19,6 @@ import com.snapdeal.reviews.commons.dto.ReviewPerUserResponse;
 
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
-import facebook4j.PictureSize;
 import facebook4j.Friend;
 import facebook4j.Reading;
 import facebook4j.ResponseList;
@@ -61,8 +60,10 @@ public class ProductServlet extends HttpServlet{
 				System.out.println("friends "+ friendsStr);
 				reviews = client.getReviewPerUserForPogId(params);
 				Map<String, Review> reviewPerUser = reviews.getReviewPerUser();
-				List<Review> rs = new ArrayList<Review>(reviewPerUser.values());
+				//List<Review> rs = new ArrayList<Review>(reviewPerUser.values());
+				List<ReviewObjectWrapper> rs = ReviewObjectWrapper.getReviewObjectWrapper(reviewPerUser, facebook);
 				request.getSession().setAttribute("rs", rs);
+				
 			}
 		} catch (FacebookException e) {
 			e.printStackTrace();
