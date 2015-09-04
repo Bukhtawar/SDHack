@@ -221,9 +221,10 @@
 							</div>
 							<div class="sdfieldwrap col-xs-19">
 								<div class="sdfields">
+									<input id="pid" name="pid" type="hidden" value="${product.id}"/>
 									<input id="nickname_value"
 										class="review-inputBox auto-max-error js-prof" type="text"
-										maxlength="40" size="40" name="nickname_value" value="viru">
+										maxlength="40" size="40" name="nickname_value" value="${facebook.name}">
 									<div id="nickname_value_error"
 										class="auto-max-error-display profanity-error"
 										for="nickname_value" style="display: none"></div>

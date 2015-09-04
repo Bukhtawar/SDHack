@@ -44,7 +44,7 @@ public class CreateReviewServlet  extends HttpServlet {
 		OpinionBo recommendation = OpinionBo.valueOf(request.getParameter("recommend"));
 		reviewRequest.setComments(request.getParameter("experience_value"));
 		reviewRequest.setHeadline(request.getParameter("headline_value"));
-		reviewRequest.setProductId("9876");
+		reviewRequest.setProductId(request.getParameter("pid"));
 		reviewRequest.setRating(Integer.parseInt(request.getParameter("reviewrating")));
 		reviewRequest.setRecommended(recommendation);
 		reviewRequest.setUserReviewsInfo(new UserReviewsInfo("user", request.getParameter("nickname_value"), Boolean.TRUE, 0));
@@ -54,8 +54,11 @@ public class CreateReviewServlet  extends HttpServlet {
 			CreateReviewResponse reviewResponse = client.createReview(createReviewRequest);
 			String reviewId = reviewResponse.getReviewResponse().getId();
 			System.out.println(reviewId);
+			request.getSession().setAttribute("createreviewresponse", "success");
 		} catch (SnapdealWSException e) {
+			request.getSession().setAttribute("createreviewresponse", "failed");
 			e.printStackTrace();
 		}
+		response.sendRedirect("product?pid="+request.getParameter("pid"));
 	}
 }
