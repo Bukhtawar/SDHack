@@ -19,8 +19,8 @@
 
 
 </head>
-<body background="">
-<div>
+<body style="background: #ececec">
+<div  style="background: white;">
 	<img src="https://www.icinga.org/wp-content/uploads/2014/06/logo_snapdeal.png" width="215" height="70"/>
 </div>
 	<div class="login">
@@ -34,11 +34,11 @@
 		</tag:loggedin>
 	</div>
 	
-<div style="float:left;width:30%;padding:20px;">
-	<img src="${product.image}" width="300"/>
+<div style="float:left;width:30%;padding:20px;margin-top: 20px">
+	<img src="${product.image}" width="356px"/>
 </div>
 
-<div id="reviews" style="float:right;width:70%">
+<div id="reviews" style="float:right;width:70%;background: white;margin-top: 40px;padding: 40px">
 	<h1>${product.name}</h1>
 	
 	
