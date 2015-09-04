@@ -46,7 +46,7 @@
 	</div>
 
 	<div id="reviews"
-		style="float: right; width: 70%; background: white; margin-top: 40px; padding: 40px;margin-bottom: 30px">
+		style="float: left; width: 68%; background: white; margin-top: 40px; padding: 40px;margin-bottom: 30px">
 		<h1>${product.name}</h1>
 
 
@@ -158,7 +158,7 @@
 
 
 			<div
-				style="line-height: 38px; background: #fafafa; padding: 3px 40px 0 40px; margin-top: 30px;">
+				style="line-height: 38px; background: #fafafa; padding: 3px 80px 0 40px; margin-top: 30px;margin-left: -75px;width: 106%">
 				<span
 					style="font-size: 14px; margin-left: -4px; color: #ababab !important;">Displaying
 					Reviews 1-8 of 8</span>
@@ -206,7 +206,7 @@
 								<div class="head">${reviewWrapper.review.headline}</div>
 								<p>${reviewWrapper.review.comments}</p>
 							</div>
-							<div class="LTgray grey-div hf-review">
+							<div class="LTgray grey-div hf-review rw">
 								Was this review helpful? <a
 									class="middle-grey-button rippleGrey hf-yes yesAnchor"
 									onclick="Snapdeal.pdpReview.markReviewHelpful(this, '0141c7ae7040000047cf527731c5776d')">${reviewWrapper.review.recommended}</a>
