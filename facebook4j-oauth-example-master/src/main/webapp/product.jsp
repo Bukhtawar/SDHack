@@ -10,28 +10,32 @@
 <link href="css/loginIframe.css" rel="stylesheet" type="text/css" />
 <link href="css/pdp.min.css" rel="stylesheet" type="text/css" />
 <link href="css/reglobe_widget.css" rel="stylesheet" type="text/css" />
+
+
+
 </head>
 <body>
 <div>
 	<img src="https://www.icinga.org/wp-content/uploads/2014/06/logo_snapdeal.png" width="215" height="70"/>
 </div>
-<div class="login">
+	<div class="login">
 		<tag:notloggedin>
-		  <a href="signin">Sign in with Facebook</a>
+			<a href="signin">Sign in with Facebook</a>
 		</tag:notloggedin>
 		<tag:loggedin>
-		  Welcome <b>${facebook.name}</b></br>
-		<a href="./logout">logout</a>
+		  Welcome <b>${facebook.name}</b>
+			</br>
+			<a href="./logout">logout</a>
 		</tag:loggedin>
 	</div>
-<div style="float:left;margin-right:60px;margin-left: 30px">
+	<div style="float:left;margin-right:60px;margin-left: 30px">
 	<img src="${product.image}" width="300"/>
 </div>
 
 <div id="reviews">
 	<h1>${product.name}</h1>
 	
-	
+	<link href="http://i3.sdlcdn.com/js/omssdpts1s73/snap/writeReviews.new.min.js" rel="stylesheet" type="text/css"/>
 	<div class="product_review" style="float:left">
 
 	<ul itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
@@ -98,6 +102,13 @@
                 <a id="notRecBtn" class="btn btn-blue btn-line rippleWhite" onclick="Snapdeal.pdpReview.recommendProduct(this, &#39;634212839248&#39;,&#39;NO&#39;);">NO</a>
             </div>
         </li>
+        <li id="user-reviewRate-content-div" class="third col-xs-8">
+            
+            <div class="text aligncenter">
+                <p id="rev-text"><span>Have you purchased this item?</span></p>
+                <a class="btn btn-orange  btn-line rippleWhite js-userReviewed" onclick="Snapdeal.pdpReview.writeReview(this, &#39;634212839248&#39;)">Write A Review</a>
+            </div>
+         </li>
         <!--  Summary Rate/Review Starts -->
         
     </ul>
