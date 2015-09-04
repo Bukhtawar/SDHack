@@ -34,6 +34,7 @@
 		});
 		jQuery('.sd-icon-star').on('click', function() {
 			rateScore = $(this).attr('sval');
+			document.getElementById("reviewrating").value=rateScore;
 			jQuery('.sd-icon-star').each(function() {
 				  if ($(this).attr('sval') <= rateScore) {
 					  $(this).addClass('active');
@@ -121,6 +122,7 @@
 								<div class="sdlbl col-lg-8 col-xs-12">
 									<h3 id="rating_label">Your Rating:</h3>
 								</div>
+								<input id="reviewrating" type="hidden" name="reviewrating" >
 								<div class="sdfieldwrap col-lg-14 col-xs-10">
 									<div class="sdfields">
 										<div id="rating_Sec" class="charttxt">
