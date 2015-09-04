@@ -50,7 +50,7 @@
 		<h1>${product.name}</h1>
 
 
-		<div class="product_review" style="float: left; width: 900px">
+		<div class="product_review" style="float: left; width:100%">
 
 			<ul itemprop="aggregateRating" itemscope=""
 				itemtype="http://schema.org/AggregateRating">
@@ -158,7 +158,7 @@
 
 
 			<div
-				style="line-height: 38px; background: #fafafa; padding: 3px 80px 0 40px; margin-top: 30px;margin-left: -75px;width: 106%">
+				style="line-height: 38px; background: #fafafa; padding: 10px;">
 				<span
 					style="font-size: 14px; margin-left: -4px; color: #ababab !important;">Displaying
 					Reviews 1-8 of 8</span>
