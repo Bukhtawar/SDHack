@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import facebook4j.Facebook;
+import facebook4j.FacebookException;
 import facebook4j.examples.dto.Product;
 
 public class ProductServlet extends HttpServlet{
@@ -26,6 +27,8 @@ public class ProductServlet extends HttpServlet{
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
 		request.getSession().setAttribute("product", productMap.get(request.getParameter("pid")));
 		request.getRequestDispatcher("product.jsp").forward(request, response);
+		System.out.println(getDisplayPictureURL(160, 160, facebook));
+		
 	}
 	
 	private static void fillProductMap(){
@@ -37,5 +40,15 @@ public class ProductServlet extends HttpServlet{
 		
 		Product p2 = new Product("I Phone 6 16 GB", "http://n3.sdlcdn.com/imgs/a/0/b/Apple-iPhone-6-16-GB-SDL691711090-1-6d93d.jpg" , "41,697");
 		productMap.put("2", p2);
+	}
+	
+	private String getDisplayPictureURL(int width, int height, final Facebook facebook) {
+		String url = null;
+		try {
+			url = facebook.getPictureURL(width, height).toString();
+		} catch (FacebookException e) {
+			e.printStackTrace();
+		}
+		return url;
 	}
 }
