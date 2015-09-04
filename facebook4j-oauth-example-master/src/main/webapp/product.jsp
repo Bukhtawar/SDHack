@@ -15,16 +15,17 @@
 <div>
 	<img src="https://www.icinga.org/wp-content/uploads/2014/06/logo_snapdeal.png" width="215" height="70"/>
 </div>
-<div class="login">
+	<div class="login">
 		<tag:notloggedin>
-		  <a href="signin">Sign in with Facebook</a>
+			<a href="signin">Sign in with Facebook</a>
 		</tag:notloggedin>
 		<tag:loggedin>
-		  Welcome <b>${facebook.name}</b></br>
-		<a href="./logout">logout</a>
+		  Welcome <b>${facebook.name}</b>
+			</br>
+			<a href="./logout">logout</a>
 		</tag:loggedin>
 	</div>
-<div style="float:left;margin-right:60px;margin-left: 30px">
+	<div style="float:left;margin-right:60px;margin-left: 30px">
 	<img src="${product.image}" width="300"/>
 </div>
 
