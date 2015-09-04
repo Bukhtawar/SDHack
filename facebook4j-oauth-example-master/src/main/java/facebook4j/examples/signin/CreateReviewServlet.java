@@ -29,7 +29,7 @@ public class CreateReviewServlet  extends HttpServlet {
 	
 	public static void initReviewClient(){
 		Map<ConfigurationParams, String> configParams =  new HashMap<ReviewClientFactory.ConfigurationParams, String>();
-		configParams.put(ConfigurationParams.BASE_URL, "http://10.1.23.137:8080/reviews-api");
+		configParams.put(ConfigurationParams.BASE_URL, "http://169.254.7.82:8080/reviews-api");
 		ReviewClientFactory.init(configParams);
 	}
 	
@@ -44,7 +44,7 @@ public class CreateReviewServlet  extends HttpServlet {
 		OpinionBo recommendation = OpinionBo.valueOf(request.getParameter("recommend"));
 		reviewRequest.setComments(request.getParameter("experience_value"));
 		reviewRequest.setHeadline(request.getParameter("headline_value"));
-		reviewRequest.setProductId("9876");
+		reviewRequest.setProductId("12121212");
 		reviewRequest.setRating(Integer.parseInt(request.getParameter("reviewrating")));
 		reviewRequest.setRecommended(recommendation);
 		reviewRequest.setUserReviewsInfo(new UserReviewsInfo("user", request.getParameter("nickname_value"), Boolean.TRUE, 0));
