@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.snapdeal.base.exception.SnapdealWSException;
 import com.snapdeal.reviews.client.api.ReviewClientService;
 import com.snapdeal.reviews.client.factory.ReviewClientFactory;
@@ -42,12 +44,13 @@ public class CreateReviewServlet  extends HttpServlet {
 		
 		CreateReviewRequest createReviewRequest = new CreateReviewRequest();
 		ReviewRequest reviewRequest = new ReviewRequest();
+		OpinionBo recommendation = OpinionBo.valueOf(request.getParameter("recommend"));
 		reviewRequest.setComments(request.getParameter("experience_value"));
 		reviewRequest.setHeadline(request.getParameter("headline_value"));
 		reviewRequest.setProductId("9876");
 		reviewRequest.setRating(Integer.parseInt(request.getParameter("reviewrating")));
-		reviewRequest.setRecommended(OpinionBo.YES);
-		reviewRequest.setUserReviewsInfo(new UserReviewsInfo("user", "nickname", Boolean.TRUE, 0));
+		reviewRequest.setRecommended(recommendation);
+		reviewRequest.setUserReviewsInfo(new UserReviewsInfo("user", request.getParameter("nickname_value"), Boolean.TRUE, 0));
 		createReviewRequest.setReviewRequest(reviewRequest);
 		
 		try {
