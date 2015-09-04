@@ -37,5 +37,9 @@ public class ProductServlet extends HttpServlet{
 		
 		Product p2 = new Product("I Phone 6 16 GB", "http://n3.sdlcdn.com/imgs/a/0/b/Apple-iPhone-6-16-GB-SDL691711090-1-6d93d.jpg" , "41,697");
 		productMap.put("2", p2);
+		
+		Product p3 = new Product("Canon EOS 6D with 24-105mm Lens", "http://n3.sdlcdn.com/imgs/a/i/q/Canon-EOS-6D-DSLR-24-1767357-1-1b0fd.jpg" , "1,34,473");
+		productMap.put("3", p3);
+		
 	}
 }
