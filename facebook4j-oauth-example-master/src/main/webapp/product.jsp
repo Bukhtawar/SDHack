@@ -161,7 +161,7 @@
 				style="line-height: 38px; background: #fafafa; padding: 10px;">
 				<span
 					style="font-size: 14px; margin-left: -4px; color: #ababab !important;">Displaying
-					Reviews 1-8 of 8</span>
+					Reviews 1-${rs.size()} of ${rs.size()}</span>
 				<li
 					style="float: right; padding-left: 30px; font-size: 14px; color: #ababab !important;"><a
 					onclick="Snapdeal.pdpReview.fetchHelpfulReviews(this, &#39;0&#39;);">Most
