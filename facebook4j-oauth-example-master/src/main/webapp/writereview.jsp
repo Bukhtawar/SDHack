@@ -113,7 +113,7 @@
 			<div class="row review-detail">
 				<form method="post" id="ajaxPostReview" action="./createreview"
 					novalidate="novalidate">
-					<div class="sdreviewwrapper box-size-property col-xs-21">
+					<div class="sdreviewwrapper box-size-property col-xs-21" style="width: 100%">
 						<div class="error"></div>
 						<div class="prinputgroup col-xs-24" id="rating">
 							<div class="mandatory-text col-xs-24">All fields are

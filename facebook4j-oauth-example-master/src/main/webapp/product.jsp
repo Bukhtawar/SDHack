@@ -19,10 +19,10 @@
 
 
 </head>
-<body>
-	<div>
-		<img src="https://www.icinga.org/wp-content/uploads/2014/06/logo_snapdeal.png" width="215" height="70"/>
-	</div>
+<body background="">
+<div>
+	<img src="https://www.icinga.org/wp-content/uploads/2014/06/logo_snapdeal.png" width="215" height="70"/>
+</div>
 	<div class="login">
 		<tag:notloggedin>
 			<a href="signin">Sign in with Facebook</a>
@@ -89,7 +89,7 @@
                             </div>
                 </li>
         <!--  Summary Recommendation Starts -->
-        <li id="user-reviewRec-content-div" class="second col-xs-8">
+        <li id="user-reviewRec-content-div" class="second col-xs-8" style="width: 30%">
             <div class="progressbar fill-Circle chart2" data-animate="false">
                 <div class="picart circle" data-percent="90">
                     <div class="charttxt">
