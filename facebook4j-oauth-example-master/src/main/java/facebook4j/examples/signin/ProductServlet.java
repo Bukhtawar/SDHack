@@ -32,7 +32,7 @@ public class ProductServlet extends HttpServlet{
 		if(productMap.size() > 0){
 			return;
 		}
-		Product p1 = new Product("Nexus 5", "http://n4.sdlcdn.com/imgs/a/v/c/LG-Google-Nexus-16-GB-SDL718884263-1-59915.jpg" , "20,999");
+		Product p1 = new Product("Nexus 5 16 GB", "http://n4.sdlcdn.com/imgs/a/v/c/LG-Google-Nexus-16-GB-SDL718884263-1-59915.jpg" , "20,999");
 		productMap.put("1", p1);
 		
 		Product p2 = new Product("I Phone 6 16 GB", "http://n3.sdlcdn.com/imgs/a/0/b/Apple-iPhone-6-16-GB-SDL691711090-1-6d93d.jpg" , "41,697");
