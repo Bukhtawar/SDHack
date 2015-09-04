@@ -12,6 +12,36 @@
 	rel="stylesheet" type="text/css" />
 <link href="http://i4.sdlcdn.com/js/omssdpts1s73/snap/base.min.js"
 	rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	var rateScore = 0;
+	jQuery(document).ready(function() {
+		jQuery('.sd-icon-star').on('mouseover', function() {
+		  var count = $(this).attr('sval');
+		  jQuery('.sd-icon-star').each(function() {
+			  if ($(this).attr('sval') <= count) {
+				  $(this).addClass('active');
+			  }
+		  });
+		});
+		jQuery('.sd-icon-star').on('mouseout', function() {
+		  var count = $(this).attr('sval');
+		  jQuery('.sd-icon-star').each(function() {
+			  if ($(this).attr('sval') > rateScore) {
+				  $(this).removeClass('active');  
+			  }
+		  });
+		});
+		jQuery('.sd-icon-star').on('click', function() {
+			rateScore = $(this).attr('sval');
+			jQuery('.sd-icon-star').each(function() {
+				  if ($(this).attr('sval') <= rateScore) {
+					  $(this).addClass('active');
+				  }
+			  });
+		});
+	});
+</script>
 </head>
 <body style="background: #ececec">
 	<div style="background: white;">
@@ -76,8 +106,11 @@
 				</div>
 
 			</div>
+			
+			
+			<!--Write review form  -->
 			<div class="row review-detail">
-				<form method="post" id="ajaxPostReview" action=""
+				<form method="post" id="ajaxPostReview" action="./createreview"
 					novalidate="novalidate">
 					<div class="sdreviewwrapper box-size-property col-xs-21">
 						<div class="error"></div>
@@ -92,7 +125,7 @@
 									<div class="sdfields">
 										<div id="rating_Sec" class="charttxt">
 											<strong _ratescore="0"> <i sval="1"
-												class="sd-icon sd-icon-star fa-star "></i> <i sval="2"
+												class="sd-icon sd-icon-star fa-star " ></i> <i sval="2"
 												class="sd-icon sd-icon-star fa-star "></i> <i sval="3"
 												class="sd-icon sd-icon-star fa-star "></i> <i sval="4"
 												class="sd-icon sd-icon-star fa-star "></i> <i sval="5"
@@ -229,6 +262,11 @@
 		</div>
 	</div>
 	
+    
+    
+    
+    
+    
     
 <!--FOOTER  -->
 	<div id="sdFooter" class="footer" style="margin-top: 30px">
