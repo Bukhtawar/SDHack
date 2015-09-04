@@ -1,7 +1,9 @@
 package facebook4j.examples.signin;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.snapdeal.base.exception.SnapdealWSException;
 import com.snapdeal.reviews.client.api.UserClientService;
 import com.snapdeal.reviews.client.factory.ReviewClientFactory;
+import com.snapdeal.reviews.commons.dto.Review;
 import com.snapdeal.reviews.commons.dto.ReviewPerUserResponse;
 
 import facebook4j.Facebook;
@@ -36,22 +39,25 @@ public class ProductServlet extends HttpServlet{
 			throws ServletException, IOException {
 		String pid = request.getParameter("pid");
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
-		request.getSession().setAttribute("product", productMap.get(pid));
+		request.getSession().setAttribute("productId", 1001);
 		request.getRequestDispatcher("product.jsp").forward(request, response);
 		ReviewClientFactory.getClient();
 		request.getSession().setAttribute("dpUrl", getDisplayPictureURL(160, 160, facebook));
 		UserClientService client = ReviewClientFactory.getUserClient();
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("productId", pid);
+		params.put("productId", "1001");
 		
 		ResponseList<Friend> responseFriends;
 		ReviewPerUserResponse reviews = null;
 		try {
 			responseFriends = facebook.getFriends(new Reading().fields("id,name"));
 			String friendsStr = getFriendIds(responseFriends);
-			params.put("users", friendsStr);
+			params.put("users", "test2@gmail.com,test6@gmail.com");
 			System.out.println("friends "+ friendsStr);
 			reviews = client.getReviewPerUserForPogId(params);
+			Map<String, Review> reviewPerUser = reviews.getReviewPerUser();
+			List<Review> rs = new ArrayList<Review>(reviewPerUser.values());
+			request.getSession().setAttribute("rs", rs);
 		} catch (FacebookException e) {
 			e.printStackTrace();
 		} catch (SnapdealWSException e) {

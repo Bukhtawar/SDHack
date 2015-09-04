@@ -27,7 +27,7 @@ public class CreateReviewServlet  extends HttpServlet {
 	
 	public static void initReviewClient(){
 		Map<ConfigurationParams, String> configParams =  new HashMap<ReviewClientFactory.ConfigurationParams, String>();
-		configParams.put(ConfigurationParams.BASE_URL, "http://10.1.28.14:8080/");
+		configParams.put(ConfigurationParams.BASE_URL, "http://169.254.7.82:8080/reviews-api");
 		ReviewClientFactory.init(configParams);
 	}
 	
